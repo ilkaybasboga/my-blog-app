@@ -1,70 +1,201 @@
-# Getting Started with Create React App
+# My Blog App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+In this project, I aimed to create My Blog App.
 
-In the project directory, you can run:
+## Project Skeleton
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+Milestone Blog App (folder for redux)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+|----readme.md         # Given to the students (Definition of the project)
+SOLUTION
+├── src
+|    ├── index.css
+|    ├── index.js
+|    ├── App.css
+|    ├── App.js
+|    ├── app
+|    │   └── store.jsx
+|    ├── assets
+|    │   ├── about.png
+|    ├── components
+|    │   ├── auth
+|    │   │   ├── LoginFom.jsx
+|    │   │   └── RegisterForm.jsx
+|    │   ├── blog
+|    │   │   ├── Card.jsx
+|    │   │   ├── CommentCard.jsx
+|    │   │   ├── CommentForm.jsx
+|    │   │   ├── DeleteModal.jsx
+|    │   │   └── UpdateModal.jsx
+|    │   ├── FooTer.jsx
+|    │   ├── NavBar.jsx
+|    ├── features
+|    │   ├── authSlice.jsx
+|    │   └── blogSlice.jsx
+|    ├── helper
+|    │   └── ToastNotify.jsx
+|    ├── hooks
+|    │   ├── useAuthCalls.jsx
+|    │   ├── useAxios.jsx
+|    │   └── useBlogCalls.jsx
+|    ├── pages
+|    │   ├── About.jsx
+|    │   ├── Dashboard.jsx
+|    │   ├── Detail.jsx
+|    │   ├── Login.jsx
+|    │   ├── NewBlog.jsx
+|    │   ├── NotFound.jsx
+|    │   ├── Profile.jsx
+|    │   └── Register.jsx
+|    └── router
+|        ├── AppRouter.jsx
+|        └── PrivateRouter.jsx
+```
 
-### `npm test`
+## Expected Outcome
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Blog App](blogapp1.gif)
 
-### `npm run build`
+## Objective
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Build a Milestone Blog App using ReactJS.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### At the end of the project, I will learn the following topics;
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- HTML
 
-### `npm run eject`
+- CSS
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- JS
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- ReactJS
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- DATA
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## Steps to Solution
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Step 1: I created React App using "npx create-react-app my-blog-app"
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Step 2: I used Django backend for authentication and CRUD operations.
 
-### Code Splitting
+- Step 3 : I used css frameworks like Bootstrap, Tailwind Css, Material UI.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Step 4 : I added the project gif to the project and my README.md file
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## API
 
-### Making a Progressive Web App
+```
+  login => users/auth/login/
+  register => users/register/
+  logout => users/auth/logout/
+```
+- Post Read/List
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```javascript
+  endpoints => api/blogs/
+  method: GET
+  no authentication
+  comments, post_view ve likes ...
+```
 
-### Advanced Configuration
+- Post Create
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```javascript
+  endpoints => api/blogs/
+  method: POST
+  headers: {"Authorization":`Token ${yourtoken}`}
 
-### Deployment
+  body: {
+      "title": "string",
+      "content": "string",
+      "image": "http://example.com",
+      "category": 0,// category endpointinden gelen verilerden seçmelisiniz
+      "status": "d",// backende d olarak giderse ana ekranda gözükmez, My Blogs sayfasında gözükür. "d" valuesunu taslak gibi düşünebiliriz. Hazırladığınız selectboxlarda valua attiributelerine "d" ve "p" değerlerini girmelisiniz.
+    }
+    // yukarıdaki verileri göndermöeniz yeterli olacaktır
+.
+    category endpoints => "api/categories"
+    status => {
+      "d":"draft",
+      "p":"published"
+    }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```
 
-### `npm run build` fails to minify
+- Post Update
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```javascript
+  endpoints => api/blogs/{post_id}/
+  method: PUT
+  headers: {"Authorization":`Token ${yourtoken}`}
+
+  body: {
+      "title": "string",
+      "content": "string",
+      "image": "http://example.com",
+      "category": 0,
+      "status": "d",
+    }
+
+    category endpoints => "api/categories"
+    status => {
+      "d":"draft",
+      "p":"published"
+    }
+```
+
+- Post Delete
+
+```javascript
+  endpoints => api/blogs/{post_id}/
+  method: DELETE
+  headers: {"Authorization":`Token ${yourtoken}`}
+```
+
+- Comments Create
+
+```javascript
+  endpoints => api/comments/{post_id}/
+  method: POST
+  headers: {"Authorization":`Token ${yourtoken}`}
+
+  body:{
+    "post":post_id,
+    "content": ""
+  }
+
+```
+
+- Likes Create
+
+```javascript
+  endpoints => api/likes/{post_id}/
+  method: POST
+  headers: {"Authorization":`Token ${yourtoken}`}
+```
+
+- Get Post Detail
+```
+  endpoints => api/blogs/${post.id}/
+  method: GET
+  headers: {"Authorization":`Token ${yourtoken}`}
+```
+
+- User Blogs
+```
+  endpoints => api/blogs/?author=${user.id}
+  method: GET
+  headers: {"Authorization":`Token ${yourtoken}`}
+```
+
+- Sample Get Response
+```json
+ 
+
+```
